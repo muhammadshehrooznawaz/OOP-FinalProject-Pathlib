@@ -1,0 +1,109 @@
+"""
+OOP Final Term Project — BS Data Science, Semester 2
+Library: pathlib (Python Standard Library)
+Topic: OOP Analysis & Custom Extension of pathlib
+
+Group Members: [Shahzaib Asif, M.Sehroez Nawaz, M.Ibaduallah Buttha]
+Student IDs:   [Your IDs Here]
+Date:          May 2026
+"""
+
+# =============================================================================
+# STANDARD LIBRARY IMPORTS — no pip install needed
+# =============================================================================
+from pathlib import Path, PurePosixPath, PureWindowsPath, PurePath
+import os
+import shutil
+import json
+import hashlib
+import datetime
+from typing import Optional, Iterator, List
+
+
+# =============================================================================
+# SECTION 1: OOP Principles Demonstrated from pathlib Source
+# =============================================================================
+
+# --- 1. INHERITANCE ---
+# pathlib uses a clear inheritance chain:
+#   object → PurePath → PurePosixPath / PureWindowsPath
+#                     → Path → PosixPath / WindowsPath
+#
+# Path inherits from PurePath, gaining all pure path manipulation
+# plus actual I/O operations (read, write, stat, etc.)
+
+print("=== 1. INHERITANCE in pathlib ===")
+p = Path(".")
+print(f"Path MRO: {[c.__name__ for c in Path.__mro__]}")
+# Output shows: Path → PurePath → object
+
+pure = PurePosixPath("/home/user/docs/report.pdf")
+print(f"\nPurePosixPath parts: {pure.parts}")
+print(f"Parent: {pure.parent}")
+print(f"Stem: {pure.stem}")
+print(f"Suffix: {pure.suffix}")
+print(f"Name: {pure.name}")
+
+
+# --- 2. ENCAPSULATION ---
+# pathlib wraps low-level os/os.path calls behind a clean OOP interface.
+# The internal _str_normcase, _flavour, _accessor etc. are "private" by
+# Python convention (single/double underscore), exposing only clean methods.
+
+print("\n=== 2. ENCAPSULATION in pathlib ===")
+secret_dir = Path("/tmp/oop_demo_dir")
+secret_dir.mkdir(exist_ok=True)
+
+sample_file = secret_dir / "sample.txt"
+sample_file.write_text("Hello from pathlib OOP demo!")
+
+# Users never touch open(), os.stat() etc. — pathlib encapsulates them:
+print(f"File exists: {sample_file.exists()}")
+print(f"File size:   {sample_file.stat().st_size} bytes")
+print(f"Is file:     {sample_file.is_file()}")
+print(f"Content:     {sample_file.read_text()}")
+
+
+# --- 3. POLYMORPHISM ---
+# PurePosixPath and PureWindowsPath share the same interface (same methods)
+# but behave differently based on platform semantics:
+
+print("\n=== 3. POLYMORPHISM in pathlib ===")
+
+def describe_path(p: PurePath) -> None:
+    """Works with ANY PurePath subclass — polymorphic usage."""
+    print(f"  Type:   {type(p).__name__}")
+    print(f"  Drive:  {p.drive!r}")
+    print(f"  Parts:  {p.parts}")
+    print(f"  Stem:   {p.stem}")
+
+posix  = PurePosixPath("/usr/local/bin/python")
+win    = PureWindowsPath(r"C:\Users\student\Desktop\project.py")
+
+print("POSIX path:")
+describe_path(posix)
+print("Windows path:")
+describe_path(win)
+
+# The / operator is overloaded (__truediv__) — operator polymorphism:
+child = Path("/home") / "user" / "docs"
+print(f"\nOperator overload /: {child}")
+
+
+# --- 4. ABSTRACTION ---
+# Path.open() abstracts away the file descriptor lifecycle.
+# Path.iterdir() abstracts away os.scandir().
+# You never deal with low-level C calls.
+
+print("\n=== 4. ABSTRACTION in pathlib ===")
+(secret_dir / "a.py").write_text("# python file")
+(secret_dir / "b.txt").write_text("text file")
+(secret_dir / "c.csv").write_text("col1,col2\n1,2")
+
+print("Listing directory (abstraction over os.scandir):")
+for item in secret_dir.iterdir():
+    print(f"  {item.name:20s}  suffix={item.suffix}")
+
+print("\nGlob pattern matching (abstraction over fnmatch/os.walk):")
+for py_file in secret_dir.glob("*.py"):
+    print(f"  Found Python file: {py_file.name}")
