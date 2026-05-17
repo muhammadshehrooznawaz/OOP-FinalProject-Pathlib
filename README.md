@@ -7,8 +7,8 @@ Object-Oriented Programming | BS Data Science — Semester 2
 
 ## 👥 Group 1
 - Member 1: Muhammad Shehrooz Nawaz (F25BDATS1M020266)
-- Member 2: Shahzaib Asif  (F25BDATS1M02070)
-- Member 3: Muhammad Ibadullah Bhutta (F25BDATS1M02073)
+- Member 2: Muhammad Ibadullah Bhutta (F25BDATS1M02070)
+- Member 3: Shahzaib Asif (F25BDATS1M02073)
 
 ## 📖 Library Chosen
 **pathlib** — Python Standard Library for filesystem path handling
