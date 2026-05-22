@@ -1,4 +1,3 @@
-# =============================================================================
 # SECTION 2: CUSTOM EXTENSION — SmartPath
 #
 # We subclass pathlib.Path to add:
@@ -12,7 +11,7 @@
 #
 # NOTE: Subclassing Path requires __new__ override (not __init__) because
 # Path uses __new__ internally due to platform-specific class dispatch.
-# =============================================================================
+
 from pathlib import Path, PurePosixPath, PureWindowsPath, PurePath
 import os
 import shutil
