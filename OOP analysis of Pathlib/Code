@@ -1,16 +1,14 @@
 """
 OOP Final Term Project — BS Data Science, Semester 2
 Library: pathlib (Python Standard Library)
-Topic: OOP Analysis & Custom Extension of pathlib
+Topic: OOP Analysis of pathlib
 
-Group Members: [Shahzaib Asif, M.Sehroez Nawaz, M.Ibaduallah Buttha]
-Student IDs:   [Your IDs Here]
-Date:          May 2026
+Group Members: Shahzaib Asif, Muhammad Shehrooz Nawaz, Muhammad Ibadullah Bhutta
+Student IDs:   F25BDATS1M02073, F25BDATS1M02066, F25BDATS1M02070
 """
 
-# ============================================================================
 # STANDARD LIBRARY IMPORTS — no pip install needed
-# =============================================================================
+
 from pathlib import Path, PurePosixPath, PureWindowsPath, PurePath
 import os
 import shutil
@@ -19,16 +17,12 @@ import hashlib
 import datetime
 from typing import Optional, Iterator, List
 
+#  OOP Principles Demonstrated from pathlib Source
 
-# =============================================================================
-# SECTION 1: OOP Principles Demonstrated from pathlib Source
-# =============================================================================
-
-# --- 1. INHERITANCE ---
+#  1. INHERITANCE 
 # pathlib uses a clear inheritance chain:
-#   object → PurePath → PurePosixPath / PureWindowsPath
-#                     → Path → PosixPath / WindowsPath
-#
+#   object → PurePath → PurePosixPath / PureWindowsPath → Path → PosixPath / WindowsPath
+
 # Path inherits from PurePath, gaining all pure path manipulation
 # plus actual I/O operations (read, write, stat, etc.)
 
@@ -45,7 +39,7 @@ print(f"Suffix: {pure.suffix}")
 print(f"Name: {pure.name}")
 
 
-# --- 2. ENCAPSULATION ---
+# 2. ENCAPSULATION 
 # pathlib wraps low-level os/os.path calls behind a clean OOP interface.
 # The internal _str_normcase, _flavour, _accessor etc. are "private" by
 # Python convention (single/double underscore), exposing only clean methods.
@@ -64,7 +58,7 @@ print(f"Is file:     {sample_file.is_file()}")
 print(f"Content:     {sample_file.read_text()}")
 
 
-# --- 3. POLYMORPHISM ---
+# 3. POLYMORPHISM 
 # PurePosixPath and PureWindowsPath share the same interface (same methods)
 # but behave differently based on platform semantics:
 
@@ -90,7 +84,7 @@ child = Path("/home") / "user" / "docs"
 print(f"\nOperator overload /: {child}")
 
 
-# --- 4. ABSTRACTION ---
+# 4. ABSTRACTION 
 # Path.open() abstracts away the file descriptor lifecycle.
 # Path.iterdir() abstracts away os.scandir().
 # You never deal with low-level C calls.
