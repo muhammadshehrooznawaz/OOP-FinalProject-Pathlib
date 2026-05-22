@@ -1,5 +1,4 @@
-# SECTION 2: CUSTOM EXTENSION — SmartPath
-#
+# CUSTOM EXTENSION — SmartPath
 # We subclass pathlib.Path to add:
 #   1. safe_copy()        — copy a file with collision handling
 #   2. checksum()         — compute MD5/SHA256 hash of file
@@ -234,7 +233,7 @@ class SmartPath(Path):
     def __repr__(self) -> str:
         return f"SmartPath('{self}')"
 
-# SECTION 3: DEMO — run as main to see everything in action
+# DEMO — run as main to see everything in action
 
 def run_demo():
     print("\n" + "=" * 60)
