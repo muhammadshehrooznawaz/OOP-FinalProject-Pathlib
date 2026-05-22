@@ -8,7 +8,7 @@ Student IDs:   [Your IDs Here]
 Date:          May 2026
 """
 
-# =============================================================================
+# ============================================================================
 # STANDARD LIBRARY IMPORTS — no pip install needed
 # =============================================================================
 from pathlib import Path, PurePosixPath, PureWindowsPath, PurePath
