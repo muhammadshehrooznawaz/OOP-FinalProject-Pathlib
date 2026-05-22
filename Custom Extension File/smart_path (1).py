@@ -42,9 +42,8 @@ class SmartPath(Path):
         obj = super().__new__(cls, *args, **kwargs)
         return obj
 
-    # ------------------------------------------------------------------
     # Private helper
-    # ------------------------------------------------------------------
+    
     def _require_file(self) -> None:
         """Raise a clear error if this path is not a regular file."""
         if not self.is_file():
@@ -53,9 +52,8 @@ class SmartPath(Path):
                 f"'{self}' is not one."
             )
 
-    # ------------------------------------------------------------------
     # 1. checksum — NEW method (not in pathlib.Path)
-    # ------------------------------------------------------------------
+    
     def checksum(self, algorithm: str = "md5") -> str:
         """
         Return the hex digest of the file using the given hash algorithm.
@@ -77,10 +75,9 @@ class SmartPath(Path):
             for chunk in iter(lambda: fh.read(65536), b""):
                 h.update(chunk)
         return h.hexdigest()
-
-    # ------------------------------------------------------------------
+        
     # 2. word_count — NEW method
-    # ------------------------------------------------------------------
+    
     def word_count(self, encoding: str = "utf-8") -> dict:
         """
         Count characters, words, and lines in a text file.
@@ -96,9 +93,8 @@ class SmartPath(Path):
             "lines": text.count("\n") + (1 if text else 0),
         }
 
-    # ------------------------------------------------------------------
     # 3. metadata — NEW method; overrides nothing but composes many calls
-    # ------------------------------------------------------------------
+    
     def metadata(self) -> dict:
         """
         Return a comprehensive metadata dictionary for the file.
@@ -125,9 +121,8 @@ class SmartPath(Path):
             info["word_stats"] = self.word_count()
         return info
 
-    # ------------------------------------------------------------------
     # 4. safe_copy — NEW method
-    # ------------------------------------------------------------------
+    
     def safe_copy(self, destination: "SmartPath | Path",
                   overwrite: bool = False) -> "SmartPath":
         """
@@ -156,9 +151,8 @@ class SmartPath(Path):
         print(f"  [safe_copy] '{self.name}' → '{dest}'")
         return SmartPath(dest)
 
-    # ------------------------------------------------------------------
     # 5. backup — NEW method
-    # ------------------------------------------------------------------
+    
     def backup(self, backup_dir: Optional["SmartPath | Path"] = None) -> "SmartPath":
         """
         Create a timestamped backup of this file.
@@ -184,9 +178,8 @@ class SmartPath(Path):
         print(f"  [backup] Created: '{backup_dest}'")
         return backup_dest
 
-    # ------------------------------------------------------------------
     # 6. find_duplicates — NEW class / static-style method on a dir path
-    # ------------------------------------------------------------------
+    
     def find_duplicates(self, algorithm: str = "md5") -> dict:
         """
         Scan this directory tree for duplicate files (same content, any name).
@@ -211,9 +204,8 @@ class SmartPath(Path):
 
         return {ck: paths for ck, paths in seen.items() if len(paths) > 1}
 
-    # ------------------------------------------------------------------
     # 7. to_dict — serialise path for JSON / data pipelines
-    # ------------------------------------------------------------------
+    
     def to_dict(self) -> dict:
         """
         Return a JSON-serialisable dict of path components.
@@ -232,9 +224,8 @@ class SmartPath(Path):
             "is_dir":   self.is_dir(),
         }
 
-    # ------------------------------------------------------------------
     # Override __truediv__ — ensures / returns SmartPath, not plain Path
-    # ------------------------------------------------------------------
+    
     def __truediv__(self, key) -> "SmartPath":
         """Override / operator so child paths are also SmartPath instances."""
         result = super().__truediv__(key)
@@ -243,10 +234,7 @@ class SmartPath(Path):
     def __repr__(self) -> str:
         return f"SmartPath('{self}')"
 
-
-# =============================================================================
 # SECTION 3: DEMO — run as main to see everything in action
-# =============================================================================
 
 def run_demo():
     print("\n" + "=" * 60)
