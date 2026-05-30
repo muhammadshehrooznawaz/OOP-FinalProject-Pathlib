@@ -11,7 +11,7 @@
 | Name | Student ID |
 |------|------------|
 | Muhammad Shehrooz Nawaz | F25BDATS1M02066 |
-| Shahzaib Asif] | F25BDATS1M02073 |
+| Shahzaib Asif | F25BDATS1M02073 |
 | Muhammad Ibadullah Bhutta | F25BDATS1M02070 |
 
 **BS Data Science — 2nd Semester**  
