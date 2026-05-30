@@ -7,11 +7,11 @@
 ## Group Members
 
 
- Name | Student ID 
-|------|------------|
-| Muhammad Shehrooz Nawaz | F25BDATS1M02066 |
-| Muhammad Ibadullah Bhutta | F25BDATS1M02070 |
-| Shahzaib Asif | F25BDATS1M02073 |
+ Name  Student ID 
+
+ Muhammad Shehrooz Nawaz  F25BDATS1M02066 
+ Muhammad Ibadullah Bhutta  F25BDATS1M02070 
+ Shahzaib Asif  F25BDATS1M02073 
 
 ---
 
@@ -89,11 +89,3 @@ Expected output shows all four OOP principles demonstrated and all SmartPath fea
 - **Abstraction** — users never call os.stat(), open(), or scandir() directly
 
 ---
-
-## References
-
-- Python Docs — pathlib: https://docs.python.org/3/library/pathlib.html
-- CPython Source: https://github.com/python/cpython/blob/main/Lib/pathlib/__init__.py
-- PEP 428 (pathlib proposal): https://peps.python.org/pep-0428/
-- Real Python pathlib guide: https://realpython.com/python-pathlib/
-
