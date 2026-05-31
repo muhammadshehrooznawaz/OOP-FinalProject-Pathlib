@@ -6,12 +6,9 @@
 
 ## Group Members
 
-
- Name  Student ID 
-
- Muhammad Shehrooz Nawaz  F25BDATS1M02066 ,
- Muhammad Ibadullah Bhutta  F25BDATS1M02070 ,
- Shahzaib Asif  F25BDATS1M02073 ,
+* **Muhammad Shehrooz Nawaz** _ F25BDATS1M02066 
+* **Muhammad Ibadullah Bhutta** _ F25BDATS1M02070 
+* **Shahzaib Asif** _ F25BDATS1M02073 
 
 ---
 
@@ -29,7 +26,7 @@ This project performs an in-depth Object-Oriented Design (OOD) analysis of Pytho
 2. **Identified all four OOP principles** with real code examples from the library source
 3. **Critiqued the design** of the PurePath/Path split (pure vs. I/O operations)
 4. **Compared pathlib to the os.path module** (the functional alternative)
-5. **Built SmartPath** — our own subclass of `Path` that adds data-science-friendly features
+5. **Built SmartPath** — our own subclass of Path that adds data-science-friendly features
 
 ---
 
